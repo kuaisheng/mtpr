@@ -1,0 +1,37 @@
+{
+    "mtpr": {
+        "group": "HOTEL或HFE等",
+        "project": "hotel-fe-mta或hotel-fe-tdc等等",
+        "branch": "develop或test(默认)等等,默认master",
+        "reviewerfilename": "reviewer人员列表,可以是项目中的文件相对项目根目录的路径 ./temp/xxx.json,也可以是线上文件http://xxxxx.com/ssss.json,优先级比配置中的reviewer低",
+        "reviewers": [
+            {
+                "name": "kevin",
+                "displayName": "Kevin"
+            },
+            {
+                "name": "lucy",
+                "displayName": "Lucy"
+            },
+            {
+                "name": "liangkuaisheng",
+                "displayName": "梁快升"
+            },
+            {
+                "groupType": true,
+                "name": "qianduandazu",
+                "displayName": "前端大组",
+                "users": [
+                    {
+                        "name": "jim",
+                        "displayName": "Jim"
+                    },
+                    {
+                        "name": "peter",
+                        "displayName": "Peter"
+                    }
+                ]
+            }
+        ]
+    }
+}

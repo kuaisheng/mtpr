@@ -1,0 +1,32 @@
+{
+  "name": "mtpr",
+  "version": "1.0.0",
+  "description": "美团使用提交pr命令行工具",
+  "main": "index.js",
+  "bin": {
+    "mtpr": "bin/mtpr.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goahead1987/mtpr.git"
+  },
+  "keywords": [
+    "mt",
+    "pr",
+    "pull",
+    "request",
+    "stash",
+    "cli"
+  ],
+  "author": "liangkuaisheng",
+  "license": "MIT",
+  "dependencies": {
+    "@mtfe/pull-request-mt": "^1.0.4",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "inquirer": "^1.0.2"
+  }
+}

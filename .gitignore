@@ -1,0 +1,14 @@
+.DS_Store
+/node_modules
+npm-debug.log
+*.swp
+.sw*
+.idea/*
+.editorconfig
+.jshintrc
+.travis.yml
+.project
+*.zip
+npm-debug.log
+*/npm-debug.log
+node_modules
