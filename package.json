@@ -1,6 +1,6 @@
 {
   "name": "mtpr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "美团使用提交pr命令行工具",
   "main": "index.js",
   "bin": {
@@ -27,6 +27,8 @@
     "@mtfe/pull-request-mt": "^1.0.4",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "inquirer": "^1.0.2"
+    "fs-extra": "^0.28.0",
+    "inquirer": "^1.0.2",
+    "lodash": "^4.11.1"
   }
 }
