@@ -14,7 +14,12 @@ var appInfo = require('./../package.json');
 var projectMtprDemo = require('./../package-demo.json');
 var reviewersPath = require('./../reviewersfile.json');
 
-var projectInfo = require(path.join(projectPath, './package.json'));
+var projectInfo = {};
+try {
+    projectInfo = require(path.join(projectPath, './package.json'));
+} catch (err) {
+    projectInfo = {};
+}
 
 var mtprInfo = projectInfo.mtpr || {};
 var keyPath = path.join(cwd, './../key.json');
