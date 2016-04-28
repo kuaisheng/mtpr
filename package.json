@@ -1,6 +1,6 @@
 {
   "name": "mtpr",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "美团使用提交pr命令行工具",
   "main": "index.js",
   "bin": {
@@ -24,7 +24,7 @@
   "author": "liangkuaisheng",
   "license": "MIT",
   "dependencies": {
-    "@mtfe/pull-request-mt": "^1.0.4",
+    "@mtfe/pull-request-mt": "^1.0.5",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "fs-extra": "^0.28.0",
