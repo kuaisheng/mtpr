@@ -2,9 +2,7 @@
 
     ------------------mtpr工具使用说明-------------------
     -------用来提交stash pull request并且发送大象消息.---------
-    -------可以使用命令 mtpr ,但是过程中需要输入分组名称,项目名称
-    -------可以使用命令 mtpr -g 分组名称 -p 项目名称 -b 默认分支名称
-    -------文档 http://wiki.sankuai.com/pages/viewpage.action?pageId=472845034
+    -------文档 http://wiki.sankuai.com/pages/viewpage.action?pageId=475101739
     -------可以在项目的package.json文件中添加 mtpr 属性,这样在使用mtpr命令的时候就可以不用输入了.
     
     
@@ -14,7 +12,9 @@
     -r, --reviewers <reviewers>', '实时设置reviewers的列表: @liangkuaisheng@xxx@yyy'
     -g, --group <group>', '分组名称'
     -p, --project <project>', '项目名称'
-    -b, --branch <branch>', '默认分支名称'
+    -b, --branch <branch>', '目标分支名称'
+    <branch>, '目标分支名称'
+    <branch> <reviewers>, '目标分支名称 实时设置reviewers的列表: @liangkuaisheng@xxx@yyy'
  
 ```
 
