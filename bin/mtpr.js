@@ -25,6 +25,7 @@ try {
 var mtprInfo = projectInfo.mtpr || {};
 var keyPath = path.join(cwd, './../key.json');
 var reviewersfilePath = path.join(cwd, './../reviewersfile.json');
+var silence = true;
 
 cmd
     //.allowUnknownOption()
@@ -32,6 +33,7 @@ cmd
     .option('-i, --info', '工具使用说明')
     .option('-k, --key', '缓存git密码')
     .option('-f, --filepath', '设置reviewers的列表文件:文件绝对路径或者url')
+    .option('-q, --question', '问题模式,信息会经过确认,默认安静模式,有值的参数不会再询问')
     .option('-r, --reviewers <reviewers>', '实时设置reviewers的列表: @liangkuaisheng@xxx@yyy')
     .option('-g, --group <group>', '分组名称')
     .option('-p, --project <project>', '项目名称')
@@ -74,6 +76,9 @@ if (cmd.info) {
             });
         });
 } else {
+    if (cmd.question) {
+        silence = false;
+    }
     var args = cmd.args;
     var br = '';
     var reviewerStr = '';
@@ -111,12 +116,17 @@ if (cmd.info) {
         return arrRes;
     })
         .then(function (arrRes) {
+            var groupStr = mtprInfo.group || arrRes[0];
+            var projectStr = mtprInfo.project || arrRes[1];
             return inquirer.prompt([
                     {
                         type: 'input',
                         name: 'group',
                         message: '你的分组名称?',
-                        default: mtprInfo.group || arrRes[0] || '',
+                        default: groupStr || '',
+                        when: function (obj) {
+                            return !(groupStr && silence);
+                        },
                         validate: function (input) {
                             if (input === '' ||
                                 input === null ||
@@ -130,7 +140,10 @@ if (cmd.info) {
                         type: 'input',
                         name: 'project',
                         message: '你的项目名称?',
-                        default: mtprInfo.project || arrRes[1] || '',
+                        default: projectStr || '',
+                        when: function (obj) {
+                            return !(projectStr && silence);
+                        },
                         validate: function (input) {
                             if (input === '' ||
                                 input === null ||
@@ -142,8 +155,8 @@ if (cmd.info) {
                     }
                 ])
                 .then(function (res) {
-                    mtprInfo.group = res.group || mtprInfo.group;
-                    mtprInfo.project = res.project || mtprInfo.project;
+                    mtprInfo.group = res.group || groupStr;
+                    mtprInfo.project = res.project || projectStr;
                     var pathObj = { //额外配置项（非必填）
                         keyPath: keyPath    // 加密密码缓存文件路径（非必填）
                     };
@@ -157,7 +170,7 @@ if (cmd.info) {
                         defaultBranch: mtprInfo.branch,    // 项目默认目标分支,如master等（非必填）
                         reviewers: mtprInfo.reviewers || []
                     }, pathObj);
-                    pull.send();
+                    pull.send(silence);
                 });
         })
         .catch(function (err) {
