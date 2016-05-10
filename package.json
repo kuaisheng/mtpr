@@ -24,7 +24,7 @@
   "author": "liangkuaisheng",
   "license": "MIT",
   "dependencies": {
-    "@mtfe/pull-request-mt": "^1.0.6",
+    "@mtfe/pull-request-mt": "^1.0.7",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "fs-extra": "^0.28.0",
