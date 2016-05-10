@@ -1,6 +1,6 @@
 {
   "name": "mtpr",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "美团使用提交pr命令行工具",
   "main": "index.js",
   "bin": {
@@ -30,6 +30,7 @@
     "fs-extra": "^0.28.0",
     "git-promise": "^0.3.0",
     "inquirer": "^1.0.2",
-    "lodash": "^4.11.1"
+    "lodash": "^4.11.1",
+    "request-sync-win": "0.0.2"
   }
 }
