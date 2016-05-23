@@ -213,6 +213,64 @@ if (cmd.info) {
         });
     }
 
+    function actions (arrRes) {
+        var groupStr = mtprInfo.group || arrRes[0];
+        var projectStr = mtprInfo.project || arrRes[1];
+        return inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'group',
+                    message: '你的分组名称?',
+                    default: groupStr || '',
+                    when: function (obj) {
+                        return !(groupStr && silence);
+                    },
+                    validate: function (input) {
+                        if (input === '' ||
+                            input === null ||
+                            input === undefined) {
+                            return '分组名称不能为空!';
+                        }
+                        return true;
+                    }
+                },
+                {
+                    type: 'input',
+                    name: 'project',
+                    message: '你的项目名称?',
+                    default: projectStr || '',
+                    when: function (obj) {
+                        return !(projectStr && silence);
+                    },
+                    validate: function (input) {
+                        if (input === '' ||
+                            input === null ||
+                            input === undefined) {
+                            return '项目名称不能为空!';
+                        }
+                        return true;
+                    }
+                }
+            ])
+            .then(function (res) {
+                mtprInfo.group = res.group || groupStr;
+                mtprInfo.project = res.project || projectStr;
+                var pathObj = { //额外配置项（非必填）
+                    keyPath: keyPath    // 加密密码缓存文件路径（非必填）
+                };
+                if (reviewersPathTemp) {
+                    pathObj.reviewersPath = reviewersPathTemp;  // reviewer路径，可以是本地文件，可以是线上文件（非必填）
+                }
+                var pull = new PRMT({
+                    projectKey: mtprInfo.group, // 组名称 （必填）
+                    repositorySlug: mtprInfo.project, // 项目名称（必填）
+                    defaultBranch: mtprInfo.branch,    // 项目默认目标分支,如master等（非必填）
+                    reviewers: mtprInfo.reviewers || []
+                }, pathObj);
+                pull.send(silence);
+            });
+    }
+
     git('config --get remote.origin.url', function (stdout) {
         var arrRes = ['', ''];
         if (stdout) {
@@ -224,64 +282,11 @@ if (cmd.info) {
         return arrRes;
     })
         .then(function (arrRes) {
-            var groupStr = mtprInfo.group || arrRes[0];
-            var projectStr = mtprInfo.project || arrRes[1];
-            return inquirer.prompt([
-                    {
-                        type: 'input',
-                        name: 'group',
-                        message: '你的分组名称?',
-                        default: groupStr || '',
-                        when: function (obj) {
-                            return !(groupStr && silence);
-                        },
-                        validate: function (input) {
-                            if (input === '' ||
-                                input === null ||
-                                input === undefined) {
-                                return '分组名称不能为空!';
-                            }
-                            return true;
-                        }
-                    },
-                    {
-                        type: 'input',
-                        name: 'project',
-                        message: '你的项目名称?',
-                        default: projectStr || '',
-                        when: function (obj) {
-                            return !(projectStr && silence);
-                        },
-                        validate: function (input) {
-                            if (input === '' ||
-                                input === null ||
-                                input === undefined) {
-                                return '项目名称不能为空!';
-                            }
-                            return true;
-                        }
-                    }
-                ])
-                .then(function (res) {
-                    mtprInfo.group = res.group || groupStr;
-                    mtprInfo.project = res.project || projectStr;
-                    var pathObj = { //额外配置项（非必填）
-                        keyPath: keyPath    // 加密密码缓存文件路径（非必填）
-                    };
-                    if (reviewersPathTemp) {
-                        pathObj.reviewersPath = reviewersPathTemp;  // reviewer路径，可以是本地文件，可以是线上文件（非必填）
-                    }
-                    var pull = new PRMT({
-                        projectKey: mtprInfo.group, // 组名称 （必填）
-                        repositorySlug: mtprInfo.project, // 项目名称（必填）
-                        defaultBranch: mtprInfo.branch,    // 项目默认目标分支,如master等（非必填）
-                        reviewers: mtprInfo.reviewers || []
-                    }, pathObj);
-                    pull.send(silence);
-                });
+            return actions(arrRes);
         })
         .catch(function (err) {
-            console.log('通过git config读取 分组 和 项目名称失败!'.red);
-            throw err;
+            console.log('请切换到含有git环境的目录中使用，或者手动输入信息！'.yellow);
+            var arrRes = ['', ''];
+            return actions(arrRes);
         });
 }
