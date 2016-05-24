@@ -21,10 +21,13 @@ try {
 } catch (err) {
     projectInfo = {};
 }
-
+function getUserHome() {
+    return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+}
+var Home_Path = getUserHome();
 var mtprInfo = projectInfo.mtpr || {};
-var keyPath = path.join(cwd, './../key.json');
-var reviewersfilePath = path.join(cwd, './../reviewersfile.json');
+var keyPath = path.join(Home_Path, './.mtpr.key');
+var reviewersfilePath = path.join(Home_Path, './.mtpr.json');
 var reviewersPath = {
     path: '',
     defaultReviewers: []
