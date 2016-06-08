@@ -46,7 +46,7 @@ var silence = true;
 cmd
     //.allowUnknownOption()
     .version(appInfo.version)
-    .option('-i, --info', '工具使用说明')
+    .option('-i, --info', '工具使用说明http://wiki.sankuai.com/pages/viewpage.action?pageId=475101739')
     .option('-k, --key', '缓存git密码')
     .option('-f, --filepath', '设置reviewers的列表文件:文件绝对路径或者url')
     .option('-d, --defaultReviewers', '设置默认reviewers的列表（需要有reviewer列表的情况下使用）')
@@ -132,8 +132,14 @@ if (cmd.info) {
             {
                 type: 'checkbox',
                 name: 'reviewers',
-                message: 'Set Default Reviewers (Need no reviewer Click Enter) ?',
+                message: '设置默认 reviewer (空格选中)?',
                 choices: reviewersAskArr,
+                validate: function (input) {
+                    if (input.length === 0) {
+                        return '不能为空';
+                    }
+                    return true;
+                },
                 filter: function (val) {
                     var resArr = [];
                     val.forEach(function (item) {
@@ -153,6 +159,10 @@ if (cmd.info) {
         });
 } else {
     var reviewerfileStr = reviewersPath.path;
+    if (!reviewerfileStr) {
+        console.log('推荐先使用mtpr -f 设置reviewer缓存文件路径'.yellow);
+        console.log('帮助文档wiki: http://wiki.sankuai.com/pages/viewpage.action?pageId=475101739'.yellow);
+    }
     var reviewerArr = [];
     try {
         if (/^(http|https):\/\/.+/gi.test(reviewerfileStr)) {
