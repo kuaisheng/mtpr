@@ -25,12 +25,14 @@
   "license": "MIT",
   "dependencies": {
     "@mtfe/pull-request-mt": "^1.0.12",
+    "bluebird": "^3.4.1",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
     "fs-extra": "^0.28.0",
     "git-promise": "^0.3.0",
     "inquirer": "^1.0.2",
     "lodash": "^4.11.1",
-    "request-sync-win": "0.0.2"
+    "request": "^2.73.0",
+    "request-promise": "^4.0.1"
   }
 }
