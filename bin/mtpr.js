@@ -77,6 +77,7 @@ cmd
     .option('-f, --filepath', '设置reviewers的列表文件:文件绝对路径或者url')
     .option('-d, --defaultReviewers', '设置默认reviewers的列表（需要有reviewer列表的情况下使用）')
     .option('-q, --question', '问题模式,信息会经过确认,默认安静模式,有值的参数不会再询问')
+    .option('-t, --title <titleStr>', '设置标题')
     .option('-r, --reviewers <reviewers>', '实时设置reviewers的列表: @liangkuaisheng@xxx@yyy')
     .option('-g, --group <group>', '分组名称')
     .option('-p, --project <project>', '项目名称')
@@ -222,6 +223,7 @@ if (cmd.info) {
             mtprInfo.project = cmd.project || mtprInfo.project || '';
             mtprInfo.branch = cmd.branch || br || mtprInfo.branch || '';
             mtprInfo.reviewers = mtprInfo.reviewers || [];
+            mtprInfo.title = cmd.title || '';
             if (reviewerStr) {
                 var reviewersArr = reviewerStr.split('@');
                 _.forEach(reviewersArr, function (value, key) {
@@ -287,7 +289,8 @@ if (cmd.info) {
                             projectKey: mtprInfo.group, // 组名称 （必填）
                             repositorySlug: mtprInfo.project, // 项目名称（必填）
                             defaultBranch: mtprInfo.branch,    // 项目默认目标分支,如master等（非必填）
-                            reviewers: mtprInfo.reviewers || []
+                            reviewers: mtprInfo.reviewers || [],
+                            title: mtprInfo.title
                         }, pathObj);
                         pull.send(silence);
                     });

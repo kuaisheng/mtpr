@@ -11,6 +11,7 @@
     -f, --filepath', '设置reviewers的列表文件:文件绝对路径或者url'
     -d, --defaultReviewers', '设置默认reviewers的列表（需要有reviewer列表的情况下使用）'
     -q, --question', '问题模式,信息会经过确认,默认安静模式,有值的参数不会再询问
+    -t, --title <titleStr>', '设置标题'
     -r, --reviewers <reviewers>', '实时设置reviewers的列表: @liangkuaisheng@xxx@yyy'
     -g, --group <group>', '分组名称'
     -p, --project <project>', '项目名称'
