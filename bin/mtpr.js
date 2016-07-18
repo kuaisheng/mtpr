@@ -60,6 +60,15 @@ function readReviewerFile (reviewersPathStr) {
                 });
         } else {
             try {
+                if (!/^(\/ | \w:).+/i.test(reviewersPathStr)) {
+                    var prePath = projectPath;
+                    var fileStr = reviewersPathStr;
+                    if (/^~\/.+/.test(reviewersPathStr)) {
+                        prePath = Home_Path;
+                        fileStr = fileStr.slice(2);
+                    }
+                    reviewersPathStr = path.join(prePath, fileStr);
+                }
                 arr = require(reviewersPathStr);
                 resolve(arr);
             } catch (err) {
