@@ -294,12 +294,14 @@ if (cmd.info) {
         }
         return arrRes;
     })
+        .catch(function (err) {
+            console.log('请切换到含有git环境的目录中使用，或者手动输入信息！'.yellow);
+            return arrRes = ['', ''];
+        })
         .then(function (arrRes) {
             return actions(arrRes);
         })
         .catch(function (err) {
-            console.log('请切换到含有git环境的目录中使用，或者手动输入信息！'.yellow);
-            var arrRes = ['', ''];
-            return actions(arrRes);
+            console.log(err);
         });
 }
