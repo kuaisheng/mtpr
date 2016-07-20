@@ -60,16 +60,20 @@ function readReviewerFile (reviewersPathStr) {
                 });
         } else {
             try {
-                if (!/^(\/ | \w:).+/i.test(reviewersPathStr)) {
-                    var prePath = projectPath;
-                    var fileStr = reviewersPathStr;
-                    if (/^~\/.+/.test(reviewersPathStr)) {
-                        prePath = Home_Path;
-                        fileStr = fileStr.slice(2);
+                if (reviewersPathStr) {
+                    if (!/^(\/ | \w:).+/i.test(reviewersPathStr)) {
+                        var prePath = projectPath;
+                        var fileStr = reviewersPathStr;
+                        if (/^~\/.+/.test(reviewersPathStr)) {
+                            prePath = Home_Path;
+                            fileStr = fileStr.slice(2);
+                        }
+                        reviewersPathStr = path.join(prePath, fileStr);
                     }
-                    reviewersPathStr = path.join(prePath, fileStr);
+                    arr = require(reviewersPathStr);
+                } else {
+                    arr = [];
                 }
-                arr = require(reviewersPathStr);
                 resolve(arr);
             } catch (err) {
                 reject(err);
@@ -194,6 +198,7 @@ if (cmd.info) {
     $defer
         .catch(function (err) {
             console.log(err);
+            console.log(1);
             return [];
         })
         .then(function (reviewerArr) {

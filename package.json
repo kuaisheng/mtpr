@@ -1,6 +1,6 @@
 {
   "name": "mtpr",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "美团使用提交pr命令行工具",
   "main": "index.js",
   "bin": {
