@@ -23,6 +23,24 @@
 
 ```
 
+    ------------------mtprs工具使用说明-------------------
+    -----------------用来管理人员的列表.---------------------
+    
+      Usage: mtprs [options]
+    
+      Options:
+    
+        -h, --help              output usage information
+        -V, --version           output the version number
+        -f, --file <filename>   人员列表文件
+        -n, --new <filename>    输出新的列表文件
+        -m, --member <namestr>  要添加的人的姓名/misId格式: 梁快升/liangkuaisheng#举个栗子/lizi
+        -o, --open              打开文件和工具
+ 
+```
+
+```
+
     1、推荐cd到有git的项目目录中执行，因为内部使用了git 的命令自动获取信息,非git环境需要手动输入。
     2、cd 到项目目录
     3、mtpr调用
