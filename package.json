@@ -1,10 +1,11 @@
 {
   "name": "mtpr",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "美团使用提交pr命令行工具",
   "main": "index.js",
   "bin": {
-    "mtpr": "bin/mtpr.js"
+    "mtpr": "bin/mtpr.js",
+    "mtprs": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,6 +33,7 @@
     "git-promise": "^0.3.0",
     "inquirer": "^1.0.2",
     "lodash": "^4.11.1",
+    "open": "0.0.5",
     "request": "^2.73.0",
     "request-promise": "^4.0.1"
   }
