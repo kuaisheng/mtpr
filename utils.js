@@ -33,10 +33,11 @@ module.exports = {
         var arr = obj;
         var res = {};
         arr.forEach(function (item, index) {
-            var name = item.passport.replace('@meituan.com', '');
+            var name = item.passport || item.name;
+            name = name.replace('@meituan.com', '');
             res[name] = {
                 name: name,
-                displayName: item.name
+                displayName: item.displayName || item.name
             };
         });
         return res;
