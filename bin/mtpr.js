@@ -198,7 +198,6 @@ if (cmd.info) {
     $defer
         .catch(function (err) {
             console.log(err);
-            console.log(1);
             return [];
         })
         .then(function (reviewerArr) {
