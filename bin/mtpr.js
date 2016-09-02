@@ -61,7 +61,7 @@ function readReviewerFile (reviewersPathStr) {
         } else {
             try {
                 if (reviewersPathStr) {
-                    if (!/^(\/ | \w:).+/i.test(reviewersPathStr)) {
+                    if (!/^(\/|\w:).+/i.test(reviewersPathStr)) {
                         var prePath = projectPath;
                         var fileStr = reviewersPathStr;
                         if (/^~\/.+/.test(reviewersPathStr)) {

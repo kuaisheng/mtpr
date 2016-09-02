@@ -63,7 +63,7 @@ module.exports = {
                     });
             } else {
                 if (reviewersPathStr) {
-                    if (!/^(\/ | \w:).+/i.test(reviewersPathStr)) {
+                    if (!/^(\/|\w:).+/i.test(reviewersPathStr)) {
                         var prePath = Config.ProjectPath;
                         var fileStr = reviewersPathStr;
                         if (/^~\/.+/.test(reviewersPathStr)) {
