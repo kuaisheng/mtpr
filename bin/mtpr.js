@@ -91,12 +91,12 @@ cmd
     .option('-d, --defaultReviewers', '设置默认reviewers的列表（需要有reviewer列表的情况下使用）')
     .option('-q, --question', '问题模式,信息会经过确认,默认安静模式,有值的参数不会再询问')
     .option('-t, --title <titleStr>', '设置标题')
-    .option('-r, --reviewers <reviewers>', '实时设置reviewers的列表: @liangkuaisheng@xxx@yyy')
+    .option('-r, --reviewers <reviewers>', '实时设置reviewers的列表: @kuaisheng@xxx@yyy')
     .option('-g, --group <group>', '分组名称')
     .option('-p, --project <project>', '项目名称')
     .option('-b, --branch <branch>', '目标分支名称')
     .option('<branch>', '目标分支名称')
-    .option('<branch> <reviewers>', '目标分支名称 实时设置reviewers的列表: @liangkuaisheng@xxx@yyy')
+    .option('<branch> <reviewers>', '目标分支名称 实时设置reviewers的列表: @kuaisheng@xxx@yyy')
     .parse(process.argv);
 
 if (cmd.info) {

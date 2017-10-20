@@ -14,7 +14,7 @@ cmd
     .version(appInfo.version)
     .option('-f, --file <filename>', '新增人员列表文件(绝对路径)')
     .option('-n, --new <filename>', '输出新的列表文件(绝对路径)')
-    .option('-m, --member <namestr>', '要添加的人的姓名/misId格式: 梁快升/liangkuaisheng#举个栗子/lizi')
+    .option('-m, --member <namestr>', '要添加的人的姓名/misId格式: 梁快升/kuaisheng#举个栗子/lizi')
     .option('-o, --open', '打开文件和工具')
     .parse(process.argv);
 

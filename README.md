@@ -12,12 +12,12 @@
     -d, --defaultReviewers', '设置默认reviewers的列表（需要有reviewer列表的情况下使用）'
     -q, --question', '问题模式,信息会经过确认,默认安静模式,有值的参数不会再询问
     -t, --title <titleStr>', '设置标题'
-    -r, --reviewers <reviewers>', '实时设置reviewers的列表: @liangkuaisheng@xxx@yyy'
+    -r, --reviewers <reviewers>', '实时设置reviewers的列表: @kuaisheng@xxx@yyy'
     -g, --group <group>', '分组名称'
     -p, --project <project>', '项目名称'
     -b, --branch <branch>', '目标分支名称'
     <branch>, '目标分支名称'
-    <branch> <reviewers>, '目标分支名称 实时设置reviewers的列表: @liangkuaisheng@xxx@yyy'
+    <branch> <reviewers>, '目标分支名称 实时设置reviewers的列表: @kuaisheng@xxx@yyy'
  
 ```
 
@@ -34,7 +34,7 @@
         -V, --version           output the version number
         -f, --file <filename>   人员列表文件
         -n, --new <filename>    输出新的列表文件
-        -m, --member <namestr>  要添加的人的姓名/misId格式: 梁快升/liangkuaisheng#举个栗子/lizi
+        -m, --member <namestr>  要添加的人的姓名/misId格式: 梁快升/kuaisheng#举个栗子/lizi
         -o, --open              打开文件和工具
  
 ```
